@@ -70,27 +70,27 @@ export default function Home() {
 
       {/* Navigation / Header */}
       <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
               <Layers className="text-white" size={18} />
             </div>
             <span className="font-bold tracking-tight text-xl">Yaisanalabs</span>
           </div>
-          <div className="flex items-center gap-6 text-sm font-medium text-gray-600">
+          <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
             <a href="#" className="hover:text-black transition-colors">Documentation</a>
             <a href="#" className="hover:text-black transition-colors">Support</a>
           </div>
         </div>
       </nav>
 
-      <main className="max-w-5xl mx-auto px-6 py-12 lg:py-20">
+      <main className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12 lg:py-20">
         {/* Hero Section */}
-        <div className="text-center mb-16 space-y-4">
-          <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight text-premium-900">
+        <div className="text-center mb-10 md:mb-16 space-y-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-premium-900">
             Enhance Every Detail.
           </h1>
-          <p className="text-xl text-premium-500 max-w-2xl mx-auto font-medium">
+          <p className="text-lg md:text-xl text-premium-500 max-w-2xl mx-auto font-medium">
             Professional-grade palatal rugae pattern enhancement for forensic and clinical analysis.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function Home() {
         {/* Content Area */}
         <div className="grid gap-12">
           {!enhancedUrl ? (
-            <div className="bg-white/40 rounded-[40px] p-8 shadow-sm border border-white/60">
+            <div className="bg-white/40 rounded-3xl md:rounded-[40px] p-4 md:p-8 shadow-sm border border-white/60">
               <ImageUpload
                 onImageSelect={handleImageSelect}
                 previewUrl={previewUrl}
@@ -107,8 +107,8 @@ export default function Home() {
               />
 
               {previewUrl && !isProcessing && (
-                <div className="mt-10 space-y-8 animate-in slide-in-from-bottom-4 duration-500">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto px-4">
+                <div className="mt-8 md:mt-10 space-y-8 animate-in slide-in-from-bottom-4 duration-500">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-2xl mx-auto px-0 md:px-4">
                     <div className="space-y-3">
                       <div className="flex justify-between text-sm font-bold text-premium-600">
                         <span>Brightness</span>
@@ -179,49 +179,60 @@ export default function Home() {
               )}
             </div>
           ) : (
-            <div className="space-y-8 animate-in fade-in duration-700">
-              <div className="flex items-center justify-between px-4">
+            <div className="space-y-8 md:space-y-12 animate-in fade-in duration-700">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-2 md:px-0">
                 <div className="flex items-center gap-3">
-                  <div className="bg-green-100 text-green-700 p-1 rounded-full">
-                    <Sparkles size={16} />
+                  <div className="bg-green-100 text-green-700 p-1.5 rounded-full">
+                    <Sparkles size={18} />
                   </div>
-                  <h2 className="text-xl font-bold">Enhancement Complete</h2>
+                  <h2 className="text-xl md:text-2xl font-bold text-premium-900">Enhancement Complete</h2>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-3 w-full sm:w-auto">
                   <button
                     onClick={handleClear}
-                    className="flex items-center gap-2 bg-premium-100 text-premium-800 px-5 py-2.5 rounded-full font-bold text-sm hover:bg-premium-200 transition-all"
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-premium-100 text-premium-800 px-6 py-3 rounded-full font-bold text-sm hover:bg-premium-200 transition-all active:scale-95"
                   >
                     <RefreshCw size={16} />
                     Start Over
                   </button>
                   <button
                     onClick={handleDownload}
-                    className="flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-gray-800 transition-all"
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-all shadow-md active:scale-95"
                   >
                     <Download size={16} />
-                    Download PNG
+                    Download
                   </button>
                 </div>
               </div>
 
-              <ComparisonSlider
-                beforeUrl={previewUrl!}
-                afterUrl={enhancedUrl}
-              />
+              <div className="max-w-3xl mx-auto w-full">
+                <ComparisonSlider
+                  beforeUrl={previewUrl!}
+                  afterUrl={enhancedUrl}
+                />
+              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-premium-800 mb-2">CLAHE Contrast</h3>
-                  <p className="text-sm text-premium-500">Adaptive histogram equalization applied to local patches for optimal rugae visibility.</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                <div className="bg-white/60 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-white/80 transition-all hover:shadow-md">
+                  <h3 className="font-bold text-premium-800 mb-2 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-premium-400 rounded-full"></div>
+                    CLAHE Contrast
+                  </h3>
+                  <p className="text-sm text-premium-500 leading-relaxed text-pretty">Adaptive histogram equalization applied to local patches for optimal rugae visibility.</p>
                 </div>
-                <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-premium-800 mb-2">Edge Sharpening</h3>
-                  <p className="text-sm text-premium-500">Unsharp masking highlights transition zones between rugae ridges and furrows.</p>
+                <div className="bg-white/60 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-white/80 transition-all hover:shadow-md">
+                  <h3 className="font-bold text-premium-800 mb-2 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-premium-400 rounded-full"></div>
+                    Edge Sharpening
+                  </h3>
+                  <p className="text-sm text-premium-500 leading-relaxed text-pretty">Unsharp masking highlights transition zones between rugae ridges and furrows.</p>
                 </div>
-                <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-premium-800 mb-2">Noise Reduction</h3>
-                  <p className="text-sm text-premium-500">Gaussian smoothing eliminates sensor noise while preserving anatomical features.</p>
+                <div className="bg-white/60 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-white/80 transition-all hover:shadow-md">
+                  <h3 className="font-bold text-premium-800 mb-2 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-premium-400 rounded-full"></div>
+                    Noise Reduction
+                  </h3>
+                  <p className="text-sm text-premium-500 leading-relaxed text-pretty">Gaussian smoothing eliminates sensor noise while preserving anatomical features.</p>
                 </div>
               </div>
             </div>
@@ -236,8 +247,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-12 mt-20">
-        <div className="max-w-7xl mx-auto px-6 text-center text-premium-400 text-sm">
+      <footer className="border-t border-gray-200 bg-white py-8 md:py-12 mt-12 md:mt-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center text-premium-400 text-sm">
           <p>© 2026 RugaeVision Forensic Tool. Developed for Palatal Rugae Analysis.</p>
         </div>
       </footer>
