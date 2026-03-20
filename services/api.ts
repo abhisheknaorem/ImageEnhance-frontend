@@ -1,11 +1,12 @@
 export const fetchEnhancedImage = async (
-  imageFile: File, 
+  imageFile: File,
   params: { brightness: number, contrast: number, clahe_limit: number, sharpen: number, grid_size: number }
 ): Promise<string> => {
   const formData = new FormData();
   formData.append('file', imageFile);
 
-  const url = new URL('http://localhost:8000/api/enhance');
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://imageenhancer-backend.onrender.com';
+  const url = new URL(`${API_BASE_URL}/api/enhance`);
   url.searchParams.append('brightness', params.brightness.toString());
   url.searchParams.append('contrast', params.contrast.toString());
   url.searchParams.append('clahe_limit', params.clahe_limit.toString());
