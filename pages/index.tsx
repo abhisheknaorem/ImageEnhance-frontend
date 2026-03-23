@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#F5F5F7] text-gray-900 selection:bg-premium-200">
       <Head>
-        <title>Palatal Rugae Enhancer</title>
+        <title>YaisanaLabs - Palatal Rugae Enhancer</title>
         <meta name="description" content="AI-powered forensic palatal image enhancement" />
       </Head>
 
@@ -72,10 +72,11 @@ export default function Home() {
       <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-              <Layers className="text-white" size={18} />
+            <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+              {/* <Layers className="text-white" size={18} /> */}
+              <div className="text-white font-bold text-xl">YS</div>
             </div>
-            <span className="font-bold tracking-tight text-xl">Yaisanalabs</span>
+            <span className="font-bold tracking-tight text-xl">YaisanaLabs</span>
           </div>
           <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
             <a href="#" className="hover:text-black transition-colors">Documentation</a>
@@ -249,7 +250,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white py-8 md:py-12 mt-12 md:mt-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 text-center text-premium-400 text-sm">
-          <p>© 2026 RugaeVision Forensic Tool. Developed for Palatal Rugae Analysis.</p>
+          <p>© 2026 YaisanaLabs. Developed for Palatal Rugae Analysis.</p>
         </div>
       </footer>
     </div>
